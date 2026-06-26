@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Spa Experience & Booking</title>
+    <!-- We will link our CSS file here next -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 1. HEADER & NAVIGATION -->
+    <header>
+        <div class="logo">RICHIE PRIME DESIGNS</div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <button class="cta-btn" onclick="openBookingModal()">Book Now</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. HERO SECTION (The Hook) -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Rejuvenate Your Body & Mind</h1>
+                <p>Experience premium, professional spa treatments tailored just for you right here in Ibadan.</p>
+                <button class="hero-btn" onclick="openBookingModal()">Schedule an Appointment</button>
+            </div>
+        </section>
+        <!-- NEW ABOUT SECTION -->
+        <section id="about" style="padding: 80px 5%; background-color: #f7f4f2; text-align: center;">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: 400; letter-spacing: 1px;">The Ultimate
+                    Relaxation Experience</h2>
+                <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
+                    We believe that self-care isn't a luxury—it's a necessity. Our wellness center combines elite,
+                    professional therapy techniques with a peaceful environment designed to melt away stress. From deep
+                    tissue muscle recovery to rejuvenating skin care, our dedicated team ensures you walk out feeling
+                    completely renewed.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. SERVICES SECTION (The Menu) -->
+        <section id="services">
+            <h2>Our Premium Services</h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <h3>Deep Tissue Massage</h3>
+                    <p class="price">₦25,000</p>
+                    <p>Relieve deep muscle tension, improve blood circulation, and completely reset your body.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <h3>Luxury Pedicure & Manicure</h3>
+                    <p class="price">₦15,000</p>
+                    <p>Treat your hands and feet to a thorough exfoliating scrub, massage, and premium polish.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <h3>Glow Skin Care & Facials</h3>
+                    <p class="price">₦30,000</p>
+                    <p>Deep cleansing and hydration designed to leave your skin feeling pampered and radiant.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 4. BOOKING MODAL (The Calendar - Hidden by default until clicked) -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBookingModal()">&times;</span>
+            <h2>Select Your Appointment</h2>
+            <form id="bookingForm">
+                <label for="service-select">Choose Service:</label>
+                <select id="service-select" required>
+                    <option value="massage">Deep Tissue Massage - ₦25,000</option>
+                    <option value="pedicure">Luxury Pedicure & Manicure - ₦15,000</option>
+                    <option value="facial">Glow Skin Care & Facials - ₦30,000</option>
+                </select>
+
+                <label for="booking-date">Select Date:</label>
+                <input type="date" id="booking-date" required>
+
+                <label for="booking-time">Select Time Slot:</label>
+                <select id="booking-time" required>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="12:30">12:30 PM</option>
+                    <option value="15:00">03:00 PM</option>
+                    <option value="17:30">05:30 PM</option>
+                </select>
+
+                <button type="submit" class="submit-booking-btn">Confirm & Lock Slot</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 5. FOOTER -->
+    <footer>
+        <p>&copy; 2026 Spa Template. Designed securely by Richie Prime.</p>
+    </footer>
+
+    <!-- We will add our JavaScript logic here next -->
+    <script src="script.js"></script>
+</body>
+
+</html>
