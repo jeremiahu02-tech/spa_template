@@ -312,3 +312,32 @@ footer {
         padding: 30px 20px;
     }
 }
+
+/* Premium WhatsApp Button Styling */
+.whatsapp-btn {
+    background-color: #25D366;
+    /* Official WhatsApp Green */
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    /* Makes it full width inside your modal card */
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.whatsapp-btn:hover {
+    background-color: #128C7E;
+    /* Darker WhatsApp Green on Hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

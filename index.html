@@ -76,13 +76,21 @@
             <span class="close-btn" onclick="closeBookingModal()">&times;</span>
             <h2>Select Your Appointment</h2>
             <form id="bookingForm">
+                <input type="text" id="clientName" placeholder="Your Name" required>
                 <label for="service-select">Choose Service:</label>
+                <select id="serviceSelected">
+                    <option value="Massage Session">Massage Session</option>
+                    <option value="Facial Treatment">Facial Treatment</option>
+                </select>
                 <select id="service-select" required>
                     <option value="massage">Deep Tissue Massage - ₦25,000</option>
                     <option value="pedicure">Luxury Pedicure & Manicure - ₦15,000</option>
                     <option value="facial">Glow Skin Care & Facials - ₦30,000</option>
                 </select>
+                <!-- LANDMARK: Look for your existing form or booking container -->
+                <div class="booking-form-container">
 
+                </div>
                 <label for="booking-date">Select Date:</label>
                 <input type="date" id="booking-date" required>
 
@@ -94,7 +102,10 @@
                     <option value="17:30">05:30 PM</option>
                 </select>
 
-                <button type="submit" class="submit-booking-btn">Confirm & Lock Slot</button>
+                <!-- Replace your plain text link with this styled button -->
+                <button class="whatsapp-btn" onclick="sendWhatsAppOrder(event)">
+                    <i class="fab fa-whatsapp"></i> Send WhatsApp Order
+                </button>
             </form>
         </div>
     </div>

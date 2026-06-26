@@ -39,12 +39,39 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
     const selectedDate = document.getElementById('booking-date').value;
     const selectedTime = document.getElementById('booking-time').value;
 
-    // Build a clean, professional summary alert
-    alert(`🎉 Booking Requested!\n\nService: ${selectedService}\nDate: ${selectedDate}\nTime: ${selectedTime}\n\nNext, the system would process a deposit payment or route this reservation layout instantly to the business manager's portal!`);
+    function sendWhatsAppOrder(event) {
+        event.preventDefault();
+        // 1. Grab values from your existing inputs (Make sure these IDs match your HTML input elements!)
+        const serviceElement = document.getElementById('serviceSelected') || document.querySelector('select');
+        const dateElement = document.getElementById('bookingTime') || document.querySelector('input[type="datetime-local"]') || document.querySelector('input[type="date"]');
+        const nameElement = document.getElementById('clientName') || document.querySelector('input[type="text"]');
+
+        const service = serviceElement ? serviceElement.value : "Spa Session";
+        const date = dateElement ? dateElement.value : "Not specified";
+        const name = nameElement ? nameElement.value : "Valued Client";
+
+        // 2. Target WhatsApp number (Use international format, no plus sign)
+        // Replace with your real testing number!
+        const businessPhone = "2349130860225";
+
+        // 3. Build the professional template text
+        const message = `Hello Richie Prime Designs, I would like to book a session!%0A%0A` +
+            `*Client Name:* ${encodeURIComponent(name)}%0A` +
+            `*Service Selected:* ${encodeURIComponent(service)}%0A` +
+            `*Preferred Date/Time:* ${encodeURIComponent(date)}%0A%0A` +
+            `Please let me know if this booking is confirmed.`;
+
+        // 4. Fire the URL link
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${businessPhone}&text=${message}`;
+
+        // Open the official WhatsApp application interface
+        window.open(whatsappUrl, '_blank');
+    }
 
     // Close the modal cleanly after submission
     closeBookingModal();
 
     // Clear the form fields for the next interaction
     document.getElementById('bookingForm').reset();
+    /* Premium WhatsApp Button Styling */
 });
