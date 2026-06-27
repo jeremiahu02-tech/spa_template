@@ -76,31 +76,34 @@
             <span class="close-btn" onclick="closeBookingModal()">&times;</span>
             <h2>Select Your Appointment</h2>
             <form id="bookingForm">
-                <input type="text" id="clientName" placeholder="Your Name" required>
+
                 <label for="service-select">Choose Service:</label>
-                <select id="serviceSelected">
-                    <option value="Massage Session">Massage Session</option>
-                    <option value="Facial Treatment">Facial Treatment</option>
-                </select>
-                <select id="service-select" required>
-                    <option value="massage">Deep Tissue Massage - ₦25,000</option>
-                    <option value="pedicure">Luxury Pedicure & Manicure - ₦15,000</option>
-                    <option value="facial">Glow Skin Care & Facials - ₦30,000</option>
-                </select>
-                <!-- LANDMARK: Look for your existing form or booking container -->
-                <div class="booking-form-container">
+                <!-- 1. Name Input -->
+                <input type="text" id="clientName" placeholder="Your Name" required>
 
-                </div>
-                <label for="booking-date">Select Date:</label>
-                <input type="date" id="booking-date" required>
-
-                <label for="booking-time">Select Time Slot:</label>
-                <select id="booking-time" required>
-                    <option value="10:00">10:00 AM</option>
-                    <option value="12:30">12:30 PM</option>
-                    <option value="15:00">03:00 PM</option>
-                    <option value="17:30">05:30 PM</option>
+                <!-- 2. Service Dropdown (Uses JavaScript to handle color shifting on selection) -->
+                <select id="serviceSelected" onchange="this.style.color='#000000'; this.style.fontWeight='600';"
+                    required>
+                    <option value="" disabled selected hidden>What service do you care for?</option>
+                    <option value="Swedish Massage">Swedish Massage - ₦20,000</option>
+                    <option value="Deep Tissue Massage">Deep Tissue Massage - ₦25,000</option>
+                    <option value="Facial Treatment">Facial Treatment - ₦20,000</option>
+                    <option value="Nail Care">Nail Care - ₦35,000</option>
                 </select>
+                <!-- 3. Dynamic Date Picker (Allows typing + calendar icon click) -->
+                <input type="text" id="bookingDate" placeholder="dd/mm/yyyy" onfocus="(this.type='date')"
+                    onblur="if(!this.value) this.type='text'" required>
+
+                <!-- 4. Dynamic Time Picker (Starts faint as 'Book Time', goes bold on select) -->
+                <select id="bookingTime" onchange="this.style.color='#000000'; this.style.fontWeight='600';" required>
+                    <option value="" disabled selected hidden>Book Time</option>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                </select>
+
 
                 <!-- Replace your plain text link with this styled button -->
                 <button class="whatsapp-btn" onclick="sendWhatsAppOrder(event)">
