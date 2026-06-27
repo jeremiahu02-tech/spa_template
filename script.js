@@ -51,7 +51,7 @@ function sendWhatsAppOrder(event) {
     // Add this small validation check inside your sendWhatsAppOrder function
     if (!service || service === "") {
         alert("Please select what service you care for!");
-        return;
+
 
     }
     const nameElement = document.getElementById('clientName');
