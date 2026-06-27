@@ -53,7 +53,7 @@ function sendWhatsAppOrder(event) {
     }
 
     // 3. Target WhatsApp number
-    const businessPhone = "2349130860225";
+    const businessPhone = "2347065410524";
 
     // 4. Build the clean, professional text layout
     const message = `Hello Richie Prime Designs, I would like to book a session!%0A%0A` +
