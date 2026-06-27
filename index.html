@@ -100,8 +100,9 @@
 
                 <!-- 4. Dynamic Time Picker -->
                 <label for="bookingDate">SELECT DATE:</label>
-                <input type="date" id="bookingDate" required
-                    style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; margin-bottom: 15px; background-color: #ffffff; color: #000000; font-family: inherit;">
+                <input type="text" id="bookingDate" placeholder="dd/mm/yyyy" onfocus="this.type='date'; this.click();"
+                    onblur="if(!this.value) this.type='text'" required
+                    style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; margin-bottom: 15px; background-color: #ffffff; color: #000000; box-sizing: border-box;">
                 <option value="09:00 AM">09:00 AM</option>
                 <option value="10:00 AM">10:00 AM</option>
                 <option value="12:00 PM">12:00 PM</option>
