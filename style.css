@@ -341,3 +341,32 @@ footer {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+/* Styling form placeholders to look clean and elegant */
+input::placeholder,
+textarea::placeholder {
+    color: #a0a0a0 !important;
+    /* A soft, premium gray */
+    font-weight: 300 !important;
+    /* Ultra-light font weight */
+    opacity: 0.8;
+}
+
+/* Make input text placeholders look faint and ultra-light */
+input::placeholder {
+    color: #b3b3b3 !important;
+    font-weight: 300 !important;
+    opacity: 0.86;
+}
+
+/* Make initial unselected dropdown prompts faint */
+select {
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+/* Ensure the choices inside the dropdown menu remain solid and clean */
+select option {
+    color: #000000;
+    font-weight: 400;
+}

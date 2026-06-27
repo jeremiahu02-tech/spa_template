@@ -8,9 +8,11 @@ function openBookingModal() {
     modal.style.display = 'flex';
 
     // Auto-set the date picker minimum to today's date so clients can't book the past
-    const dateInput = document.getElementById('booking-date');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
+    const dateInput = document.getElementById('bookingDate');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+    }
 }
 
 // Function to close the booking modal
@@ -28,56 +30,46 @@ window.onclick = function (event) {
 }
 
 // ==========================================================================
-// 2. FORM SUBMISSION & CLIENT NOTIFICATION LOGIC
+// 2. FORM SUBMISSION & WHATSAPP ORDER LOGIC
 // ==========================================================================
-document.getElementById('bookingForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevents the page from refreshing
-
-    // Grab the inputs chosen by the client
-    const serviceSelect = document.getElementById('service-select');
-    const selectedService = serviceSelect.options[serviceSelect.selectedIndex].text;
-    const selectedDate = document.getElementById('booking-date').value;
-    const selectedTime = document.getElementById('booking-time').value;
-
-    // Close the modal cleanly after submission
-    closeBookingModal();
-
-    // Clear the form fields for the next interaction
-    document.getElementById('bookingForm').reset();
-    /* Premium WhatsApp Button Styling */
-});
 function sendWhatsAppOrder(event) {
-    event.preventDefault();
-    // Add this small validation check inside your sendWhatsAppOrder function
-    if (!service || service === "") {
-        alert("Please select what service you care for!");
+    if (event) event.preventDefault(); // Prevents the page from reloading
 
-
-    }
+    // 1. Grab the inputs matching your HTML IDs exactly
     const nameElement = document.getElementById('clientName');
     const serviceElement = document.getElementById('serviceSelected');
     const dateElement = document.getElementById('bookingDate');
     const timeElement = document.getElementById('bookingTime');
 
-    const name = nameElement ? nameElement.value : "Valued Client";
-    const service = serviceElement ? serviceElement.value : "Not selected";
-    const date = dateElement ? dateElement.value : "Not specified";
-    const time = timeElement ? timeElement.value : "Not specified";
+    const name = nameElement ? nameElement.value.trim() : "";
+    const service = serviceElement ? serviceElement.value : "";
+    const date = dateElement ? dateElement.value : "";
+    const time = timeElement ? timeElement.value : "";
 
-    // 2. Target WhatsApp number (Use international format, no plus sign)
-    // Replace with your real testing number!
+    // 2. Validation Check: Ensure no empty values go through
+    if (!name || !service || !date || !time) {
+        alert("Please fill in all details before sending your order!");
+        return; // Stops execution if something is missing
+    }
+
+    // 3. Target WhatsApp number
     const businessPhone = "2349130860225";
 
-    // 3. Build the professional template text
+    // 4. Build the clean, professional text layout
     const message = `Hello Richie Prime Designs, I would like to book a session!%0A%0A` +
         `*Client Name:* ${encodeURIComponent(name)}%0A` +
         `*Service Selected:* ${encodeURIComponent(service)}%0A` +
         `*Preferred Date:* ${encodeURIComponent(date)}%0A` +
         `*Preferred Time:* ${encodeURIComponent(time)}%0A%0A` +
         `Please let me know if this booking is confirmed.`;
-    // 4. Fire the URL link
+
+    // 5. Fire the URL link
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${businessPhone}&text=${message}`;
 
-    // 7. Open official WhatsApp interface
+    // 6. Open official WhatsApp interface
     window.open(whatsappUrl, '_blank');
+
+    // 7. Clean up the interface after launching WhatsApp
+    closeBookingModal();
+    document.getElementById('bookingForm').reset();
 }

@@ -30,6 +30,7 @@
                 <button class="hero-btn" onclick="openBookingModal()">Schedule an Appointment</button>
             </div>
         </section>
+
         <!-- NEW ABOUT SECTION -->
         <section id="about" style="padding: 80px 5%; background-color: #f7f4f2; text-align: center;">
             <div style="max-width: 800px; margin: 0 auto;">
@@ -77,24 +78,28 @@
             <h2>Select Your Appointment</h2>
             <form id="bookingForm">
 
-                <label for="service-select">Choose Service:</label>
                 <!-- 1. Name Input -->
                 <input type="text" id="clientName" placeholder="Your Name" required>
 
-                <!-- 2. Service Dropdown (Uses JavaScript to handle color shifting on selection) -->
-                <select id="serviceSelected" onchange="this.style.color='#000000'; this.style.fontWeight='600';"
-                    required>
+                <!-- 2. Service Dropdown (All your saved services are perfectly tucked here now) -->
+                <label for="serviceSelected">CHOOSE SERVICE:</label>
+                <select id="serviceSelected"
+                    style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; margin-bottom: 15px; background-color: #ffffff;"
+                    onchange="this.style.color='#000000'; this.style.fontWeight='600';" required>
                     <option value="" disabled selected hidden>What service do you care for?</option>
                     <option value="Swedish Massage">Swedish Massage - ₦20,000</option>
                     <option value="Deep Tissue Massage">Deep Tissue Massage - ₦25,000</option>
                     <option value="Facial Treatment">Facial Treatment - ₦20,000</option>
                     <option value="Nail Care">Nail Care - ₦35,000</option>
                 </select>
-                <!-- 3. Dynamic Date Picker (Allows typing + calendar icon click) -->
+
+                <!-- 3. Dynamic Date Picker -->
+                <label>SELECT DATE:</label>
                 <input type="text" id="bookingDate" placeholder="dd/mm/yyyy" onfocus="(this.type='date')"
                     onblur="if(!this.value) this.type='text'" required>
 
-                <!-- 4. Dynamic Time Picker (Starts faint as 'Book Time', goes bold on select) -->
+                <!-- 4. Dynamic Time Picker -->
+                <label>SELECT TIME SLOT:</label>
                 <select id="bookingTime" onchange="this.style.color='#000000'; this.style.fontWeight='600';" required>
                     <option value="" disabled selected hidden>Book Time</option>
                     <option value="09:00 AM">09:00 AM</option>
@@ -104,9 +109,9 @@
                     <option value="04:00 PM">04:00 PM</option>
                 </select>
 
-
-                <!-- Replace your plain text link with this styled button -->
-                <button type="button" onclick="sendWhatsAppOrder(event)">Send WhatsApp Order</button>
+                <!-- 5. Premium WhatsApp Styled Button -->
+                <button type="button" class="whatsapp-btn" onclick="sendWhatsAppOrder(event)">Send WhatsApp
+                    Order</button>
             </form>
         </div>
     </div>
