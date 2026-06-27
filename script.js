@@ -48,14 +48,20 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
 });
 function sendWhatsAppOrder(event) {
     event.preventDefault();
-    // 1. Grab values from your existing inputs (Make sure these IDs match your HTML input elements!)
-    const serviceElement = document.getElementById('serviceSelected') || document.querySelector('select');
-    const dateElement = document.getElementById('bookingTime') || document.querySelector('input[type="datetime-local"]') || document.querySelector('input[type="date"]');
-    const nameElement = document.getElementById('clientName') || document.querySelector('input[type="text"]');
+    // Add this small validation check inside your sendWhatsAppOrder function
+    if (!service || service === "") {
+        alert("Please select what service you care for!");
+        return;
+    }
+    const nameElement = document.getElementById('clientName');
+    const serviceElement = document.getElementById('serviceSelected');
+    const dateElement = document.getElementById('bookingDate');
+    const timeElement = document.getElementById('bookingTime');
 
-    const service = serviceElement ? serviceElement.value : "Spa Session";
-    const date = dateElement ? dateElement.value : "Not specified";
     const name = nameElement ? nameElement.value : "Valued Client";
+    const service = serviceElement ? serviceElement.value : "Not selected";
+    const date = dateElement ? dateElement.value : "Not specified";
+    const time = timeElement ? timeElement.value : "Not specified";
 
     // 2. Target WhatsApp number (Use international format, no plus sign)
     // Replace with your real testing number!
@@ -65,7 +71,8 @@ function sendWhatsAppOrder(event) {
     const message = `Hello Richie Prime Designs, I would like to book a session!%0A%0A` +
         `*Client Name:* ${encodeURIComponent(name)}%0A` +
         `*Service Selected:* ${encodeURIComponent(service)}%0A` +
-        `*Preferred Date/Time:* ${encodeURIComponent(date)}%0A%0A` +
+        `*Preferred Date:* ${encodeURIComponent(date)}%0A%0A` +
+        `*Preferred Time:* ${encodeURIComponent(time)}%0A%0A` +
         `Please let me know if this booking is confirmed.`;
 
     // 4. Fire the URL link
