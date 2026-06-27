@@ -52,6 +52,7 @@ function sendWhatsAppOrder(event) {
     if (!service || service === "") {
         alert("Please select what service you care for!");
         return;
+
     }
     const nameElement = document.getElementById('clientName');
     const serviceElement = document.getElementById('serviceSelected');
@@ -71,13 +72,12 @@ function sendWhatsAppOrder(event) {
     const message = `Hello Richie Prime Designs, I would like to book a session!%0A%0A` +
         `*Client Name:* ${encodeURIComponent(name)}%0A` +
         `*Service Selected:* ${encodeURIComponent(service)}%0A` +
-        `*Preferred Date:* ${encodeURIComponent(date)}%0A%0A` +
+        `*Preferred Date:* ${encodeURIComponent(date)}%0A` +
         `*Preferred Time:* ${encodeURIComponent(time)}%0A%0A` +
         `Please let me know if this booking is confirmed.`;
-
     // 4. Fire the URL link
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${businessPhone}&text=${message}`;
 
-    // Open the official WhatsApp application interface
+    // 7. Open official WhatsApp interface
     window.open(whatsappUrl, '_blank');
 }
